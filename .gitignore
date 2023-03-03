@@ -107,6 +107,7 @@ celerybeat.pid
 env/
 venv/
 ENV/
+SagresVenv/
 env.bak/
 venv.bak/
 
