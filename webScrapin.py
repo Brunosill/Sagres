@@ -15,7 +15,7 @@ option.headlees = True
 driver = webdriver.Chrome(options=option)
 
 driver.get(url)
-time.sleep(5)
+time.sleep(3)
 
 def feicharPop():
 #Feichar poppap 
@@ -59,7 +59,6 @@ def SelecionarAno(ano):
 SelecionarAno("2022")
 time.sleep(1)
     #selecionar detalhes 
-
 def selecaoOpcao():
     driver.find_element(
         By.XPATH,
@@ -83,6 +82,7 @@ elemento = driver.find_element(
 page = BeautifulSoup(
     elemento, 'lxml'
 )
+
 dicio = {
     "codUnidadeGestora":[],
     "ano" :[],
@@ -96,8 +96,12 @@ dicio = {
     "nomeFornecedor":[]
 }
 driver.quit()
+#print(pd.read_html(page))
+#print(page.find_all('div',{'class':'ag-row'}))
+
+
+
 for tag in page.find_all('div',{'class':'ag-row'}):
-    print(tag.find_all('div')[0].text)
     dicio["codUnidadeGestora"].append(tag.find_all('div')[0].text)
     dicio["ano"].append(tag.find_all('div')[1].text)
     dicio["mes"].append(tag.find_all('div')[2].text)
@@ -106,10 +110,11 @@ for tag in page.find_all('div',{'class':'ag-row'}):
     dicio["codBanco"].append(tag.find_all('div')[5].text)
     dicio["numAgencia"].append(tag.find_all('div')[6].text)
     dicio["numContaBancaria"].append(tag.find_all('div')[7].text)
-    dicio["codFornecedor":].append(tag.find_all('div')[8].text)
+    dicio["codFornecedor"].append(tag.find_all('div')[8].text)
     dicio["nomeFornecedor"].append(tag.find_all('div')[9].text)
     
-print(pd.DataFrame(dicio))
+
+pd.DataFrame(dicio).to_csv("dados.csv")
 
 
 """
