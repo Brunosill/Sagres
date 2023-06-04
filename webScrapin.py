@@ -11,14 +11,13 @@ import json
 url = 'https://sagresonline.tce.pb.gov.br/#/municipal/inicio'
 
 option = Options()
-option.headlees = True
+option.headless = False 
 driver = webdriver.Chrome(options=option)
 
 driver.get(url)
 time.sleep(3)
 
 def feicharPop():
-#Feichar poppap 
     driver.find_element(
         By.CSS_SELECTOR,
         ".introjs-skipbutton" 
@@ -96,10 +95,10 @@ dicio = {
     "nomeFornecedor":[]
 }
 driver.quit()
-#print(pd.read_html(page))
+print(str(page.find_all('div',{'class':'ag-row'})))
 #print(page.find_all('div',{'class':'ag-row'}))
 
-
+"""
 
 for tag in page.find_all('div',{'class':'ag-row'}):
     dicio["codUnidadeGestora"].append(tag.find_all('div')[0].text)
@@ -115,7 +114,7 @@ for tag in page.find_all('div',{'class':'ag-row'}):
     
 
 pd.DataFrame(dicio).to_csv("dados.csv")
-
+"""
 
 """
     table = driver.find_element(
