@@ -17,8 +17,8 @@ def buscaListaCidades():
     ).click()
 
     cidade = driver.find_element(
-    By.XPATH,
-    "//*[@id='municipiosDropdown']/div/div[4]/div[2]/ul"
+        By.XPATH,
+        "//*[@id='municipiosDropdown']/div/div[4]/div[2]/ul"
     ).get_attribute('outerHTML')
 
     driver.quit()

@@ -34,7 +34,7 @@ def selecionarCidade(cidade):
     driver.find_element(
         By.XPATH,
         '/html/body/app-root/div/header/div/ul/li[2]/app-localidade-selector/p-dropdown/div/div[4]/div[1]/input'
-    ).send_keys(cidade)
+    ).send_keys("Cuitegi")
     driver.find_element(
         By.XPATH,
         "/html/body/app-root/div/header/div/ul/li[2]/app-localidade-selector/p-dropdown/div/div[4]/div[2]/ul/p-dropdownitem/li/div/div"
